@@ -1,5 +1,6 @@
 <?php
-function pixels($value) {
+function pixels($value)
+{
     return $value . 'px';
 }
 class Colors
@@ -33,6 +34,17 @@ class Method
 
 class Styles
 {
+    public static function from($styles_obj)
+    {
+        $styles = '';
+        $keys = array_keys($styles_obj);
+        $arr_len = count($keys);
+        for ($i = 0; $i < $arr_len; $i++) {
+            $styles .= "{$keys[$i]}: {$styles_obj[$keys[$i]]};";
+        }
+        return $styles;
+    }
+
     public static function width($size)
     {
         return "width: $size;";
@@ -67,7 +79,8 @@ class Styles
     }
 }
 
-class Padding {
+class Padding
+{
     public static function all($value)
     {
         return "padding:$value;";
